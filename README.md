@@ -78,3 +78,4 @@ playwright-merge-monocart-reports-1  | [MR] generating test report ...
 - `npm run second-shard`: runs the second shard of Playwright tests. It uses `--shard 2/2` with Playwright test. After running the tests it copies the result from the monocart-reporter into the `./shards/2` folder.
 - `npm run all-shards`: runs the first and second shards. In the end the monocart-reporter form each of the sharded runs will be in the `./shards` folder.
 - `npm run merge-cli`: uses the monocart-reporter merge CLI to merge the results from the Playwright test sharded runs. It merges the reports from `./shards/1` and `./shards/2` folders.
+- `npm run docker:merge-cli`: uses Docker to show that the merge CLI doesn't work as expected when merging zip files in linux environments. It executes the monocart-reporter merge CLI to merge the results from the Playwright test sharded runs. It merges the reports from `./shards/1` and `./shards/2` folders.
