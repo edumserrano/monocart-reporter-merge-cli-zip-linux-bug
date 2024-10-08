@@ -1,0 +1,30 @@
+name: ngx-module-federation-tools
+
+volumes:
+  npm-cache:
+    external: false
+  node-modules:
+    external: false
+
+services:
+  playwright-merge-monocart-reports:
+    image: mcr.microsoft.com/playwright:v1.48.0-jammy
+    working_dir: /app
+    entrypoint: /bin/sh
+    command:
+      - -c
+      - |
+        npm i
+
+        echo "\nRunning find command on ./shards dir..."
+        find ./shards -type f
+        echo "Find command finished.\n"
+
+        echo "Running monocart reporter merge CLI..."
+        # npx monocart merge ./shards/*.zip -c ./playwright.merge-monocart-reports.ts --import tsx
+        npm run merge-cli
+    volumes:
+      - npm-cache:/root/.npm
+      - .:/app
+      - node-modules:/app/node_modules
+    stop_grace_period: 0s

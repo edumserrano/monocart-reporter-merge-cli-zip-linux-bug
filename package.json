@@ -1,0 +1,29 @@
+{
+  "name": "monocart-reporter-merge-cli-zip-linux-bug",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "merge-cli": "npx rimraf --glob ./test-reporters/* && npx monocart merge ./shards/**/*.zip -c ./playwright.monocart-reporter-merge.ts --import tsx",
+    "all-shards": "npm run first-shard && npm run second-shard",
+    "first-shard": "npx rimraf --glob ./shards/1/* && npx playwright test --shard 1/2 && npx cpy --flat ./test-reporters/monocart-reporter/ ./shards/1",
+    "second-shard": "npx rimraf --glob ./shards/2/* && npx playwright test --shard 2/2 && npx cpy --flat ./test-reporters/monocart-reporter/ ./shards/2",
+    "docker:merge-cli": "docker compose -f ./docker-compose.yml up --menu=false --exit-code-from playwright-merge-monocart-reports"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5",
+    "cpy-cli": "^5.0.0",
+    "monocart-reporter": "^2.9.4",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.3.5",
+    "tsx": "^4.19.1",
+    "yargs": "^17.7.2",
+    "zod": "^3.23.8"
+  }
+}

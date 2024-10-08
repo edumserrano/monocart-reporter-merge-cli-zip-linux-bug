@@ -1,0 +1,8 @@
+node_modules/
+/test-results/
+/monocart-report/
+/test-reporters/
+/shards/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
