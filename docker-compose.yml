@@ -21,7 +21,6 @@ services:
         echo "Find command finished.\n"
 
         echo "Running monocart reporter merge CLI..."
-        # npx monocart merge ./shards/*.zip -c ./playwright.merge-monocart-reports.ts --import tsx
         npm run merge-cli
     volumes:
       - npm-cache:/root/.npm

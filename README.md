@@ -1,5 +1,9 @@
 # monocart reporter merge CLI bug when using the `zip` option on linux repro repo
 
+> [!IMPORTANT]
+>
+> This repo has been archived because the issue has been resolved. The solution to this problem was to use single quotes around the glob passed to the monocart-reporter merge CLI, which in this repo would mean updating the `merge-cli` command so that it becomes: `npx rimraf --glob ./test-reporters/* && npx monocart merge './shards/**/*.zip' -c ./playwright.monocart-reporter-merge.ts --import tsx`.
+
 ## Description
 
 This is a demo project to support [[Feature Request] merge CLI: accept compressed files #147](https://github.com/cenfun/monocart-reporter/issues/147).
